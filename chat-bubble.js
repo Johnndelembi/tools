@@ -1,8 +1,8 @@
 (function () {
     // Extract data attributes from script tag
     const scriptTag = document.currentScript;
-    const userId = scriptTag.getAttribute('data-user-id') || 'root';
-    const sessionId = scriptTag.getAttribute('data-session-id') || 'root';
+    const userId = scriptTag.getAttribute('data-user-id') || 'notify';
+    const sessionId = scriptTag.getAttribute('data-session-id') || 'notify';
     const bgColor = scriptTag.getAttribute('data-bg-color') || '#fff';
     const textColor = scriptTag.getAttribute('data-text-color') || '#000';
     const logoUrl = scriptTag.getAttribute('data-logo-url') || '';
