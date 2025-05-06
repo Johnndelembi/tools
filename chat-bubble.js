@@ -1,10 +1,10 @@
 (function () {
     // Extract data attributes from script tag
     const scriptTag = document.currentScript;
-    const userId = scriptTag.getAttribute('data-user-id') || 'notify';
-    const sessionId = scriptTag.getAttribute('data-session-id') || 'notify';
-    const bgColor = scriptTag.getAttribute('data-bg-color') || '#fff';
-    const textColor = scriptTag.getAttribute('data-text-color') || '#000';
+    const userId = scriptTag.getAttribute('data-user-id') || 'root';
+    const sessionId = scriptTag.getAttribute('data-session-id') || 'root';
+    const bgColor = scriptTag.getAttribute('data-bg-color') || '#FFFFFF';
+    const textColor = scriptTag.getAttribute('data-text-color') || '#1F2937';
     const logoUrl = scriptTag.getAttribute('data-logo-url') || '';
 
     // Load Inter font
