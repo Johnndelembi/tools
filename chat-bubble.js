@@ -1,11 +1,17 @@
 (function () {
     // Extract data attributes from script tag
     const scriptTag = document.currentScript;
-    const userId = scriptTag.getAttribute('data-user-id') || 'root';
-    const sessionId = scriptTag.getAttribute('data-session-id') || 'root';
-    const bgColor = scriptTag.getAttribute('data-bg-color') || '#fff';
-    const textColor = scriptTag.getAttribute('data-text-color') || '#000';
+    const userId = scriptTag.getAttribute('data-user-id') || 'notify';
+    const sessionId = scriptTag.getAttribute('data-session-id') || 'notify';
+    const bgColor = scriptTag.getAttribute('data-bg-color') || '#FFFFFF';
+    const textColor = scriptTag.getAttribute('data-text-color') || '#1F2937';
     const logoUrl = scriptTag.getAttribute('data-logo-url') || '';
+
+    // Load Inter font
+    const fontLink = document.createElement('link');
+    fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap';
+    fontLink.rel = 'stylesheet';
+    document.head.appendChild(fontLink);
 
     // Create chat bubble
     const bubble = document.createElement('div');
@@ -18,10 +24,14 @@
     window.id = 'chat-window';
     window.style.display = 'none';
     window.innerHTML = `
-        ${logoUrl ? `<img src="${logoUrl}" alt="Logo" style="max-width:100px;margin:10px"/>` : ''}
+        ${logoUrl ? `<img src="${logoUrl}" alt="Logo" style="max-width:120px;margin:16px auto;display:block"/>` : ''}
         <div id="chat-messages"></div>
         <div id="chat-input">
             <input type="text" id="message-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')window.chatBubble.sendMessage()">
+            <button onclick="window.chatBubble.sendMessage()">Send</button>
+        </div>
+        <div id="chat-footer">
+            <a href="https://notify.africa/" target="_blank" rel="noopener noreferrer">Powered By Notify Africa</a>
         </div>
     `;
     document.body.appendChild(window);
@@ -31,65 +41,127 @@
     style.textContent = `
         #chat-bubble {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #3b82f6;
-            color: #fff;
+            bottom: 24px;
+            right: 24px;
+            background: #1E3A8A;
+            color: #FFFFFF;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            width: 64px;
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #chat-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
         }
         #chat-window {
             position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 300px;
-            height: 400px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            bottom: 100px;
+            right: 24px;
+            width: 320px;
+            height: 480px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            display: none;
             flex-direction: column;
             background: ${bgColor};
             color: ${textColor};
+            font-family: 'Inter', sans-serif;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         #chat-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 10px;
+            padding: 16px;
+            background: #F9FAFB;
+            border-radius: 12px 12px 0 0;
         }
         #chat-input {
-            border-top: 1px solid #e5e7eb;
-            padding: 10px;
+            display: flex;
+            gap: 8px;
+            padding: 12px;
+            border-top: 1px solid #E5E7EB;
+            background: ${bgColor};
         }
         #chat-input input {
-            width: 100%;
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: ${textColor};
+        }
+        #chat-input input:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+        #chat-input button {
+            padding: 10px 16px;
+            background: #3B82F6;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        #chat-input button:hover {
+            background: #2563EB;
+        }
+        #chat-footer {
+            text-align: center;
             padding: 8px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
+            font-size: 12px;
+            color: #6B7280;
+            border-top: 1px solid #E5E7EB;
+        }
+        #chat-footer a {
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        #chat-footer a:hover {
+            text-decoration: underline;
         }
         .message-user {
             text-align: right;
-            margin-bottom: 8px;
+            margin: 8px 0;
         }
         .message-bot {
             text-align: left;
-            margin-bottom: 8px;
+            margin: 8px 0;
         }
         .message-user p {
             display: inline-block;
-            padding: 8px;
-            background: #dbeafe;
-            border-radius: 8px;
+            padding: 10px 14px;
+            background: #DBEAFE;
+            border-radius: 12px 12px 0 12px;
+            font-size: 14px;
+            max-width: 80%;
+            line-height: 1.5;
         }
         .message-bot p {
             display: inline-block;
-            padding: 8px;
-            background: #f3f4f6;
-            border-radius: 8px;
+            padding: 10px 14px;
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px 12px 12px 0;
+            font-size: 14px;
+            max-width: 80%;
+            line-height: 1.5;
         }
     `;
     document.head.appendChild(style);
@@ -107,7 +179,7 @@
             this.displayMessage(msg, 'user');
             input.value = '';
             try {
-                const res = await fetch('http://localhost:8000/v1/message', {    
+                const res = await fetch('http://localhost:8000/v1/message', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
