@@ -179,7 +179,7 @@
             this.displayMessage(msg, 'user');
             input.value = '';
             try {
-                const res = await fetch('https://vsph9gw5-8000.euw.devtunnels.ms/v1/messages', {
+                const res = await fetch('https://vsph9gw5-8000.euw.devtunnels.ms/v1/message', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
