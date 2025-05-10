@@ -32,7 +32,7 @@
             <button id="send-button">Send</button>
         </div>
         <div id="chat-footer">
-            <a href="https://notify.africa/" target="_blank" rel="noopener noreferrer">Powered By Notify Africa</a>
+            <a href="https://notify.africa/" target="_blank" rel="noopener noreferrer">Powered By datadarasa.io</a>
         </div>
     `;
     document.body.appendChild(window);
