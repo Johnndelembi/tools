@@ -180,20 +180,20 @@
             this.displayMessage(msg, 'user');
             input.value = '';
             try {
-                console.log('Sending message:', { userId, sessionId, message: msg });
-                const res = await fetch('https://vsph9gw5-8000.euw.devtunnels.ms/v1/message', {
+                console.log('Sending message:', { name, wa_id, message: msg });
+                const res = await fetch('http://localhost:8000/webhook/message', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-User-ID': userId
+                        'X-User-ID': name
                     },
                     body: JSON.stringify({
-                        max_tokens: 100,
-                        message: msg,
-                        session_id: sessionId,
-                        temperature: 0.6,
-                        user_id: userId,
-                        role: 'user'
+                        // max_tokens: 100,
+                        message_body: msg,
+                        wa_id: wa_id,
+                        // temperature: 0.6,
+                        name: 'name',
+                        // role: 'user'
                     })
                 });
                 console.log('Response status:', res.status);
