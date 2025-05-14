@@ -55,16 +55,7 @@
             <input type="text" id="message-input" placeholder="Type a message...">
             <button id="send-button">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path class="plane-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                    <style>
-                        .plane-path {
-                            animation: fly 1.5s ease-in-out infinite;
-                        }
-                        @keyframes fly {
-                            0%, 100% { transform: translateY(0); }
-                            50% { transform: translateY(-2px) rotate(2deg); }
-                        }
-                    </style>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h18m-9-9l9 9-9 9"/>
                 </svg>
             </button>
         </div>
@@ -261,6 +252,40 @@
             max-width: 80%;
             line-height: 1.5;
         }
+        .message-loading {
+            text-align: left;
+            margin: 12px 0;
+        }
+        .message-loading .dots {
+            display: flex;
+            gap: 4px;
+            padding: 8px 12px;
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px 8px 8px 0;
+            max-width: 80%;
+        }
+        .message-loading .dot {
+            width: 6px;
+            height: 6px;
+            background: #6B7280;
+            border-radius: 50%;
+            animation: bounce 1.2s infinite;
+        }
+        .message-loading .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .message-loading .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-4px);
+            }
+        }
     `;
     document.head.appendChild(style);
 
@@ -269,6 +294,27 @@
         toggleChat: function () {
             const w = document.getElementById('chat-window');
             w.style.display = w.style.display === 'none' ? 'flex' : 'none';
+        },
+        showLoading: function () {
+            const messages = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = 'message-loading';
+            div.innerHTML = `
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            `;
+            div.id = 'loading-indicator';
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        },
+        hideLoading: function () {
+            const loading = document.getElementById('loading-indicator');
+            if (loading) {
+                loading.remove();
+            }
         },
         sendMessage: async function () {
             const input = document.getElementById('message-input');
@@ -283,6 +329,7 @@
             // Uncomment below for actual API call
             
             try {
+                this.showLoading();
                 const res = await fetch(`${baseUrl}/v1/message`, {
                     method: 'POST',
                     headers: {
@@ -298,6 +345,7 @@
                         role: 'user'
                     })
                 });
+                this.hideLoading();
                 const data = await res.json();
                 if (data.message) {
                     this.displayMessage(data.message, 'bot');
@@ -309,6 +357,7 @@
                     this.displayMessage(errorMsg, 'bot');
                 }
             } catch (e) {
+                this.hideLoading();
                 this.displayMessage('Error: Failed to send message', 'bot');
             }
             
