@@ -54,30 +54,18 @@
             </button>
             <input type="text" id="message-input" placeholder="Type a message...">
             <button id="send-button">
-                // <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                //     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                // </svg>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path class="plane-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                  <style>
-                      .plane-path {
-                          animation: fly 1.5s ease-in-out infinite;
-                      }
-                      @keyframes fly {
-                          0%, 100% { transform: translateY(0); }
-                          50% { transform: translateY(-2px) rotate(2deg); }
-                      }
-                  </style>
-              </svg>
-                      .plane-path {
-                          animation: fly 1.5s ease-in-out infinite;
-                      }
-                      @keyframes fly {
-                          0%, 100% { transform: translateY(0); }
-                          50% { transform: translateY(-2px) rotate(2deg); }
-                      }
-                  </style>
-              </svg>
+                    <path class="plane-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                    <style>
+                        .plane-path {
+                            animation: fly 1.5s ease-in-out infinite;
+                        }
+                        @keyframes fly {
+                            0%, 100% { transform: translateY(0); }
+                            50% { transform: translateY(-2px) rotate(2deg); }
+                        }
+                    </style>
+                </svg>
             </button>
         </div>
         <div id="chat-footer">
