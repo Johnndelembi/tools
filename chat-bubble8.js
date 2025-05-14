@@ -268,11 +268,11 @@
             this.displayMessage(msg, 'user');
             input.value = '';
             // Simulate bot response (as in React version)
-            setTimeout(() => {
-                this.displayMessage('Thanks for your message! How else can I assist you today?', 'bot');
-            }, 1000);
+            // setTimeout(() => {
+            //     this.displayMessage('Thanks for your message! How else can I assist you today?', 'bot');
+            // }, 1000);
             // Uncomment below for actual API call
-            /*
+            
             try {
                 const res = await fetch(`${baseUrl}/v1/message`, {
                     method: 'POST',
@@ -302,7 +302,7 @@
             } catch (e) {
                 this.displayMessage('Error: Failed to send message', 'bot');
             }
-            */
+            
         },
         displayMessage: function (text, sender) {
             const messages = document.getElementById('chat-messages');
