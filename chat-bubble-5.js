@@ -9,7 +9,7 @@
   const bgColor = scriptTag.getAttribute('data-bg-color') || '#52DD69';
   const textColor = scriptTag.getAttribute('data-text-color') || '#FFFFFF';
   const logoUrl = scriptTag.getAttribute('data-logo-url') || 'https://cdn.jsdelivr.net/gh/Johnndelembi/tools@main/Screenshot%202025-05-26%20at%2011.50.11.png';
-  const baseUrl = scriptTag.getAttribute('data-base-url') || 'http://127.0.0.1:8000';
+  const baseUrl = scriptTag.getAttribute('data-base-url') || 'https://notify-web-assistant-api.beagile.africa';
 
   // Load React if not already available
   function loadDependencies(callback) {
@@ -448,7 +448,7 @@
             React.createElement('div', { className: "flex items-center justify-between" }, [
               React.createElement('div', { className: "flex items-center", key: "avatar-container" }, [
                 React.createElement(Avatar, { className: "h-12 w-12 border-2 border-white", key: "avatar" }, [
-                  // React.createElement(AvatarImage, { src: logoUrl || "", alt: "Support", key: "avatar-img" }),
+                  React.createElement(AvatarImage, { src: logoUrl || "", alt: "Support", key: "avatar-img" }),
                   React.createElement(AvatarFallback, { className: "bg-green-600 text-white", key: "avatar-fallback" }, "E")
                 ]),
                 React.createElement('div', { className: "ml-3", key: "header-text" }, [
