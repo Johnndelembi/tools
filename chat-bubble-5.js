@@ -8,7 +8,7 @@
   const sessionId = scriptTag.getAttribute('data-session-id') || 'notify';
   const bgColor = scriptTag.getAttribute('data-bg-color') || '#52DD69';
   const textColor = scriptTag.getAttribute('data-text-color') || '#FFFFFF';
-  const logoUrl = scriptTag.getAttribute('data-logo-url') || 'https://cdn.jsdelivr.net/gh/Johnndelembi/tools@main/Screenshot%202025-05-26%20at%2011.50.11.png';
+  const logoUrl = scriptTag.getAttribute('data-logo-url') || '';
   const baseUrl = scriptTag.getAttribute('data-base-url') || 'https://notify-web-assistant-api.beagile.africa';
 
   // Load React if not already available
@@ -54,8 +54,8 @@
       .rounded-2xl { border-radius: 1rem; }
       .rounded-br-none { border-bottom-right-radius: 0; }
       .rounded-bl-none { border-bottom-left-radius: 0; }
-      .bg-green-600 { background-color: #059669; }
-      .bg-green-200 { background-color: #A7F3D0; }
+      .bg-green-600 { background-color: #52DD69; }
+      .bg-green-200 { background-color: #52DD69; }
       .bg-white { background-color: #FFFFFF; }
       .bg-gray-100 { background-color: #F3F4F6; }
       .bg-green-50 { background-color: #ECFDF5; }
