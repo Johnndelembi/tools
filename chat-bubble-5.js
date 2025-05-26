@@ -6,9 +6,9 @@
   const scriptTag = document.currentScript;
   const userId = scriptTag.getAttribute('data-user-id') || 'notify';
   const sessionId = scriptTag.getAttribute('data-session-id') || 'notify';
-  const bgColor = scriptTag.getAttribute('data-bg-color') || '#1E1E2A';
+  const bgColor = scriptTag.getAttribute('data-bg-color') || '#52DD69';
   const textColor = scriptTag.getAttribute('data-text-color') || '#FFFFFF';
-  const logoUrl = scriptTag.getAttribute('data-logo-url') || '';
+  const logoUrl = scriptTag.getAttribute('data-logo-url') || 'https://cdn.jsdelivr.net/gh/Johnndelembi/tools@main/Screenshot%202025-05-26%20at%2011.50.11.png';
   const baseUrl = scriptTag.getAttribute('data-base-url') || 'http://127.0.0.1:8000';
 
   // Load React if not already available
@@ -301,7 +301,7 @@
       const [isChatOpen, setIsChatOpen] = useState(false);
       const [message, setMessage] = useState('');
       const [messages, setMessages] = useState([
-        { text: 'Hello!  Welcome to BiasharaPlus. How can I assist you today? Select an option below or write me a message directly:', sender: 'bot' }
+        { text: 'Hello!  Welcome. How can I assist you today? Select an option below or write me a message directly:', sender: 'bot' }
       ]);
       const [isLoading, setIsLoading] = useState(false);
       const messagesEndRef = useRef(null);
