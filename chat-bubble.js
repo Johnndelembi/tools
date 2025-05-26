@@ -164,7 +164,7 @@
       @media (min-width: 640px) {
         .md\\:bottom-24 { bottom: 6rem; }
         .md\\:right-6 { right: 1.5rem; }
-        .md\\:w-\\[400px\\] { width: 400px; }
+        .md\\:w-\\[600px\\] { width: 600px; }
         .md\\:rounded-lg { border-radius: 0.5rem; }
         .md\\:h-\\[80vh\\] { height: 80vh; }
         .md\\:h-0 { height: 0; }
