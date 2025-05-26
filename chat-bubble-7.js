@@ -8,7 +8,7 @@
   const sessionId = scriptTag.getAttribute('data-session-id') || 'notify';
   const bgColor = scriptTag.getAttribute('data-bg-color') || '#52DD69';
   const textColor = scriptTag.getAttribute('data-text-color') || '#FFFFFF';
-  const logoUrl = scriptTag.getAttribute('data-logo-url') || '';
+  const logoUrl = scriptTag.getAttribute('data-logo-url') || 'https://cdn.jsdelivr.net/gh/Johnndelembi/tools@main/6235849 1.png';
   const baseUrl = scriptTag.getAttribute('data-base-url') || 'https://notify-web-assistant-api.beagile.africa';
 
   // Load React if not already available
@@ -448,7 +448,7 @@
             React.createElement('div', { className: "flex items-center justify-between" }, [
               React.createElement('div', { className: "flex items-center", key: "avatar-container" }, [
                 React.createElement(Avatar, { className: "h-12 w-12 border-2 border-white", key: "avatar" }, [
-                  React.createElement(AvatarImage, { src: logoUrl || "", alt: "Support", key: "avatar-img" }),
+                  React.createElement(AvatarImage, { src: logoUrl || "https://cdn.jsdelivr.net/gh/Johnndelembi/tools@main/6235849 1.png", alt: "Support", key: "avatar-img" }),
                   React.createElement(AvatarFallback, { className: "bg-green-600 text-white", key: "avatar-fallback" }, "E")
                 ]),
                 React.createElement('div', { className: "ml-3", key: "header-text" }, [
@@ -518,15 +518,15 @@
                   key: "option-1"
                 }, "Chat with Support"),
                 React.createElement('button', {
-                  onClick: () => handleQuickOption("Make Subscription Payment"),
+                  onClick: () => handleQuickOption("What hours are you available?"),
                   className: "w-full text-left py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors",
                   key: "option-2"
-                }, "Make Subscription Payment"),
+                }, "What hours are you available?"),
                 React.createElement('button', {
-                  onClick: () => handleQuickOption("Install BiasharaPlus Mobile Application"),
+                  onClick: () => handleQuickOption("Where can I find pricing information?"),
                   className: "w-full text-left py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors",
                   key: "option-3"
-                }, "Install BiasharaPlus Mobile Application")
+                }, "Where can I find pricing information?")
               ]),
               
               isLoading && React.createElement('div', { className: "flex items-end gap-2", key: "loading-indicator" }, [
